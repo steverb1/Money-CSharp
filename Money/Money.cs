@@ -25,6 +25,10 @@ namespace MoneyExercise
 
         public Money add(Money other)
         {
+            if (currency != other.currency)
+            {
+                throw new ArgumentException();
+            }
             return new Money(amount + other.amount, currency);
         }
 
@@ -47,6 +51,7 @@ namespace MoneyExercise
 
     public enum Currency
     {
-        USD
+        USD,
+        CAD
     }
 }
