@@ -5,14 +5,29 @@ namespace MoneyExercise.Tests.Unit
     public class MoneyTests
     {
         [Test]
-        public void AddOneAndTwo_SumIsThree()
+        public void OnePlusTwo_SumIsThree()
         {
-            Money money2 = new Money(1.0m);
-            Money money1 = new Money(2.0m);
+            Money money1 = new Money(1.0m, Currency.USD);
+            Money money2 = new Money(2.0m, Currency.USD);
 
             Money sum = money1.add(money2);
 
-            Assert.That(sum.Amount, Is.EqualTo(3.0m));
+            Money expectedResult = new Money(3.0m, Currency.USD);
+
+            Assert.That(sum, Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void ThreePlusFive_SumIsEight()
+        {
+            Money money1 = new Money(3.0m, Currency.USD);
+            Money money2 = new Money(5.0m, Currency.USD);
+
+            Money sum = money1.add(money2);
+
+            Money expectedResult = new Money(8.0m, Currency.USD);
+
+            Assert.That(sum, Is.EqualTo(expectedResult));
         }
     }
 }
