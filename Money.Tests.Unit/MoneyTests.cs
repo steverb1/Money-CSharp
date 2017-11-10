@@ -5,7 +5,7 @@ namespace MoneyExercise.Tests.Unit
     public class MoneyTests
     {
         [Test]
-        public void TestCase()
+        public void AddOneAndTwo_SumIsThree()
         {
             Money money2 = new Money(1.0m);
             Money money1 = new Money(2.0m);
