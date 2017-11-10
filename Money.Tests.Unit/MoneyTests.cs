@@ -36,7 +36,11 @@ namespace MoneyExercise.Tests.Unit
             Money money1 = new Money(3.0m, Currency.USD);
             Money money2 = new Money(5.0m, Currency.CAD);
 
-            Assert.That(() => money1.add(money2), Throws.Exception);
+            Money sum = money1.add(money2);
+
+            Money expectedResult = new Money(5.5m, Currency.USD);
+
+            Assert.That(sum, Is.EqualTo(expectedResult));
         }
     }
 }

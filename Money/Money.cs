@@ -27,7 +27,8 @@ namespace MoneyExercise
         {
             if (currency != other.currency)
             {
-                throw new ArgumentException();
+                other.amount /= 2;
+                other.currency = currency;
             }
             return new Money(amount + other.amount, currency);
         }
