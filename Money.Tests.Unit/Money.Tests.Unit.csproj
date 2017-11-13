@@ -32,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MoneyTests.cs" />
+    <Compile Include="ExchangeServiceStub.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

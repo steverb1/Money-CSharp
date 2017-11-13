@@ -6,6 +6,12 @@ namespace MoneyExercise
     {
         private Decimal amount;
         private Currency currency;
+        private CurrencyConverting exchangeService = new ExchangeService();
+
+        public void SetExchangeService(CurrencyConverting newExchangeService)
+        {
+            exchangeService = newExchangeService;
+        }
 
         public Decimal Amount
         {
@@ -27,10 +33,9 @@ namespace MoneyExercise
         {
             if (currency != other.currency)
             {
-                other.amount /= 2;
-                other.currency = currency;
+                amount = exchangeService.convert(amount, currency, other.Currency);
             }
-            return new Money(amount + other.amount, currency);
+            return new Money(amount + other.amount, other.currency);
         }
 
         public override bool Equals(Object other)
@@ -47,6 +52,11 @@ namespace MoneyExercise
         public override int GetHashCode()
         {
             return amount.GetHashCode() ^ currency.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("[Money: Amount={0}, Currency={1}]", Amount, Currency);
         }
     }
 
